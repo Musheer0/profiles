@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { useProfileCard } from "@/hooks/use-probile-card"
 import { CheckCircle, AlertCircle, Loader2 } from "lucide-react"
@@ -9,29 +9,40 @@ import { useMutation } from "convex/react"
 import { api } from "../../../convex/_generated/api"
 
 export function SaveToast() {
-  const { profileCard, isSaved, isLoading, setIsLoading, setIsSaved, setProfileCard } = useProfileCard()
-
+  const { profileCard, isSaved, isLoading, setIsLoading, setIsSaved } = useProfileCard()
+const profileRef = useRef(profileCard)
   const [error, setError] = useState<string | null>(null)
   const [showSuccess, setShowSuccess] = useState(false)
   const action =useMutation(api.profiles.update)
+  useEffect(() => {
+  profileRef.current = profileCard
+}, [profileCard])
+
   const handleSave = async () => {
+    
     try {
       setIsLoading(true)
       setError(null)
-      await action({data:profileCard})
+      await action({data:profileRef.current})
       setShowSuccess(true)
       // Hide success message after 3 seconds
       setTimeout(() => {
         setShowSuccess(false)
       }, 1000)
+            setIsLoading(false)
+            setIsSaved(true)
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred")
       setIsLoading(false)
     }
+    
+          setIsLoading(false)
+
   }
   const handleKeyDown = (event: KeyboardEvent) => {
-      if ((event.ctrlKey || event.metaKey) && event.key === "s") {
+    if ((event.ctrlKey || event.metaKey) && event.key === "s") {
       event.preventDefault() // Prevent browser's default save behavior
+  
 
       if (!isSaved && !isLoading) {
         handleSave()
@@ -42,7 +53,7 @@ export function SaveToast() {
 
     document.addEventListener("keydown", handleKeyDown)
     return () => document.removeEventListener("keydown", handleKeyDown)
-  }, [profileCard])
+  }, [isSaved,setIsSaved])
   // Don't show toast if already saved and no error
   if (isSaved && !error && !showSuccess) {
     return <></>

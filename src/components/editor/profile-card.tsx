@@ -16,7 +16,7 @@ const ProfileCard = ({profileCard}:{profileCard:tprofile_card}) => {
 const thickness = profileCard.border?.thickness || 0
   return (
     <Card className={cn(
-      'w-full  p-0 rounded-[2.4rem] max-w-[500px] gap-0',
+      'w-full  p-0 rounded-[51.07px]  max-w-[527px] gap-0',
       !profileCard.innershadow_disables && 'inner-shadow-bottom',
     )}
        style={{
@@ -26,7 +26,7 @@ const thickness = profileCard.border?.thickness || 0
     >
      <motion.div
       className={cn(
-        "main bg-neutral-900 text-zinc-100 rounded-[2.3rem] pt-2 pb-7",
+        "main bg-neutral-900 text-zinc-100 rounded-[51.07px] -translate-y-[3px] py-[32px] px-[12px] sm:px-[22px]",
         !profileCard.shadow_disabled && "profile-body"
       )}
       style={{
@@ -59,7 +59,7 @@ const thickness = profileCard.border?.thickness || 0
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.4, ease: "easeOut" }}
       >
-        <CardHeader className="flex text-zinc-500 shadow-sm tracking-tight font-[500] text-[12px] py-4 items-center justify-between">
+        <CardHeader className="flex text-zinc-500 border-0   tracking-tight font-[500] text-[12px] pb-[31px] items-center justify-between">
           <StatusLabel
             data={profileCard.status}
             primary={profileCard.colors.primary}
@@ -71,7 +71,7 @@ const thickness = profileCard.border?.thickness || 0
           <Profile data={profileCard.profile} />
         </CardContent>
 
-        <CardFooter className="flex flex-col">
+        <CardFooter className="flex pt-[28px] flex-col">
           <Actions
             primary={profileCard.primary_btn}
             secondary={profileCard.secondary_btn}

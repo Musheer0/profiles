@@ -20,7 +20,7 @@ const ProfileEditor = () => {
   }
 
   return (
-    <div className="w-full flex items-center py-3 gap-4">
+    <div className="w-full flex items-center  gap-4">
       <DropdownMenu>
         <DropdownMenuTrigger asChild >
             <div className="relative group">
@@ -45,7 +45,7 @@ const ProfileEditor = () => {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <div className="info w-full flex flex-col gap-1">
+      <div className="info w-full flex flex-col ">
         <input
           type="text"
           value={profileCard.profile.name}
