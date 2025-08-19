@@ -6,7 +6,7 @@ import React from 'react'
 const Bio = ({data}:{data:tbio}) => {
   return (
     <div className={cn(
-      'flex items-center gap-2 justify-center w-full h-[40px] text-sm font-semibold ',
+      'flex items-center gap-1 justify-center w-full h-[40px] text-[13px]  pb-2 sm:text-sm font-semibold ',
       data.reverse && 'flex-row-reverse'
     )}>
    {data.img ? (

@@ -8,7 +8,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className='w-full max-w-[1300px] h-full  py-5 mx-auto'>
+    <div className='w-full max-w-[1300px] h-full px-2 py-5 mx-auto'>
       <nav className='w-full pb-5 flex gap-[22px] items-center justify-between'>
         <p className='text-xl font-bold '>Profiles</p>
          <Link href={'https://x.com/heysatya_'} className='ml-auto'>
@@ -51,19 +51,11 @@ Create a sleek, customizable profile card. Share it anywhere with your personal 
 No coding. Just vibes.
         </h1>
       </section>
- <div className="min-h-screen">
-      {/* Header */}
-      <div className="bg-white  px-4 py-3">
-        <div className="flex items-center justify-between max-w-md mx-auto">
-          <div className="text-sm text-gray-600">https://profiless.vercel.app/profile/musheer</div>
-          <Button className="bg-black text-white hover:bg-gray-800 px-4 py-2 rounded-full text-sm">
-            Share Profile
-          </Button>
-        </div>
-      </div>
+ <div className="min-h-screen hidden sm:flex  flex-col">
+      
 
       {/* Main Content */}
-      <div className="flex flex-col lg:flex-row min-h-[calc(100vh-80px)]">
+      <div className="flex flex-col lg:flex-row ">
         {/* Left Side - Hero Content */}
         <div className="flex-1 flex items-center justify-center px-8 py-16">
           <div className="max-w-lg">
@@ -97,8 +89,8 @@ No coding. Just vibes.
       </div>
 
       {/* Bottom Section */}
-      <div className=" px-8 py-16">
-        <div className="max-w-6xl mx-auto flex flex-col flex-row-reverse  lg:flex-row items-center justify-between gap-12">
+      <div className=" flex items-center justify-center py-10 ">
+        <div className="max-w-6xl mx-auto flex flex-col   lg:flex-row items-center justify-between gap-12">
           {/* Left - Share URL Preview */}
           <div className="flex-1">
             <div className="bg-white rounded-full shadow-md px-6 py-4 flex items-center justify-between max-w-md">

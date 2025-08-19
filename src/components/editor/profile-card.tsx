@@ -9,14 +9,14 @@ import Profile from './profile'
 import Actions from './actions'
 import Bio from './bio'
 import Links from './links'
-import { cn,  generateTailwindGradient, getBorderWidth } from '@/lib/utils'
+import { cn,  generateTailwindGradient } from '@/lib/utils'
 import { tprofile_card } from '@/lib/types'
 const ProfileCard = ({profileCard}:{profileCard:tprofile_card}) => {
   const sides = profileCard.border?.sides || []
 const thickness = profileCard.border?.thickness || 0
   return (
     <Card className={cn(
-      'w-full  p-0 rounded-[51.07px]  max-w-[527px] gap-0',
+      'w-full  p-0 sm:rounded-[51.07px] rounded-[31.07px]  max-w-[527px] gap-0',
       !profileCard.innershadow_disables && 'inner-shadow-bottom',
     )}
        style={{
@@ -26,7 +26,7 @@ const thickness = profileCard.border?.thickness || 0
     >
      <motion.div
       className={cn(
-        "main bg-neutral-900 text-zinc-100 rounded-[51.07px] -translate-y-[3px] py-[32px] px-[12px] sm:px-[22px]",
+        "main bg-neutral-900 text-zinc-100 sm:rounded-[51.07px] rounded-[31.07px] -translate-y-[3px] py-[20px] sm:py-[32px] px-[2px] sm:px-[22px]",
         !profileCard.shadow_disabled && "profile-body"
       )}
       style={{
@@ -59,7 +59,7 @@ const thickness = profileCard.border?.thickness || 0
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.4, ease: "easeOut" }}
       >
-        <CardHeader className="flex text-zinc-500 border-0   tracking-tight font-[500] text-[12px] pb-[31px] items-center justify-between">
+        <CardHeader className="flex text-zinc-500 border-0   tracking-tight font-[500] text-[12px]  pb-[20px] sm:pb-[31px] items-center justify-between">
           <StatusLabel
             data={profileCard.status}
             primary={profileCard.colors.primary}
@@ -71,7 +71,7 @@ const thickness = profileCard.border?.thickness || 0
           <Profile data={profileCard.profile} />
         </CardContent>
 
-        <CardFooter className="flex pt-[28px] flex-col">
+        <CardFooter className="flex pt-[20px] sm:pt-[28px] flex-col">
           <Actions
             primary={profileCard.primary_btn}
             secondary={profileCard.secondary_btn}
