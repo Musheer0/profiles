@@ -10,7 +10,8 @@ import { Loader2Icon } from 'lucide-react';
 const ProfileCardLoader = () => {
  
   return (
-    <Card className={cn(
+  <div className='w-full h-screen p-2 flex flex-col items-center pt-10 ' >
+      <Card className={cn(
       'w-full  p-0 rounded-[2.4rem] max-w-[500px] gap-0 ',
     )}
 
@@ -28,6 +29,7 @@ const ProfileCardLoader = () => {
     </motion.div>
      <Bio data={{img:'',txt:'Loading...',reverse:false}}/>
     </Card>
+  </div>
   )
 }
 

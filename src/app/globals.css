@@ -125,9 +125,9 @@ box-shadow: 0px 14px 22.1px 0px rgba(0, 0, 0, 0.24);
 
 }
 .inner-shadow-bottom{
-box-shadow: 0px -2px 5px 1px rgba(0,0,0,0.35) inset;
--webkit-box-shadow: 0px -2px 5px 1px rgba(0,0,0,0.35) inset;
--moz-box-shadow: 0px -2px 5px 1px rgba(0,0,0,0.35) inset;
+box-shadow: 0px -2px 5px 1px rgba(0,0,0,0.20) inset;
+-webkit-box-shadow: 0px -2px 5px 1px rgba(0,0,0,0.20) inset;
+-moz-box-shadow: 0px -2px 5px 1px rgba(0,0,0,0.20) inset;
 }
 .editor{
    background: 
