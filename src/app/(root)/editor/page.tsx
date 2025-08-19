@@ -1,7 +1,9 @@
 "use client"
 import ProfileInitializer from '@/components/editor/initialize'
+import { LinksProvider } from '@/components/editor/links-context'
 import ProfileCardEditor from '@/components/editor/profile-card-editor'
 import { SaveToast } from '@/components/editor/save-profile-toast'
+import { LinksSidebar } from '@/components/editor/sidebars/links-sidebar'
 import Sidebar from '@/components/editor/sidebars/sidebar'
 import { Button } from '@/components/ui/button'
 import { useProfileCard } from '@/hooks/use-probile-card'
@@ -14,7 +16,6 @@ const Page = () => {
   return (
   <ProfileInitializer>
       <section
-    
     style={{
       backgroundColor:profileCard.body_color
     }}
@@ -26,7 +27,10 @@ const Page = () => {
       }}>Copy Profile Url<CopyIcon/></Button>
       </div>
       <Sidebar/>
+     <LinksProvider>
        <ProfileCardEditor/>
+       <LinksSidebar/>
+       </LinksProvider>
        <SaveToast/>
     </section>
   </ProfileInitializer>

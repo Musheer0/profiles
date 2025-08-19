@@ -1,6 +1,7 @@
 export type tlink = {
     name:string,
-    link:string
+    link:string,
+    id:string
 }
 export type tbutton = {
     link:string,

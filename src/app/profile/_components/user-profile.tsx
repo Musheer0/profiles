@@ -14,6 +14,7 @@ const UserProfile = async({params}:{params:{username:string}}) => {
     }}
     className='w-full h-screen p-2 flex flex-col items-center pt-10 '>
        <ProfileCard profileCard={data?.data}/>
+     
         <Link href={'/'}  className='absolute text-muted-foreground text-xs bottom-5 left-1/2 -translate-x-1/2'>
         Powered By Profiles
         </Link>

@@ -30,7 +30,7 @@ export default function ProfileInitializer({ children }: ProfileInitializerProps
   }, [profile]);
 
   // Show loader while fetching
-  if (profile === undefined)
+  if (!profile)
     return (
       <div className="flex items-center justify-center w-full h-screen">
         <Loader2Icon className="animate-spin" />

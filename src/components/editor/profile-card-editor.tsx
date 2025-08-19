@@ -9,6 +9,7 @@ import ProfileEditor from './profile-editor'
 import BioEditor from './bio-editor'
 import ActionsEditor from './actions-editor'
 import { useProfileCard } from '@/hooks/use-probile-card'
+import LinksEditor from './links-editor'
 const ProfileCardEditor = () => {
     const {profileCard}=useProfileCard();
     const sides = profileCard.border?.sides || []
@@ -46,7 +47,7 @@ const thickness = profileCard.border?.thickness || 0
     </CardContent>
     <CardFooter className='flex pt-[28px] flex-col'>
      <ActionsEditor/>
-      <Links data={profileCard.links}/>
+      <LinksEditor/>
     </CardFooter>
      </div>
      <BioEditor/>
