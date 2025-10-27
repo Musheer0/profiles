@@ -7,6 +7,8 @@ import { useProfileCard } from '@/hooks/use-probile-card'
 import { tborder_sides } from '@/lib/types';
 import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon,  LucideProps,  Square } from 'lucide-react';
 import React, { ForwardRefExoticComponent, RefAttributes } from 'react'
+import { ColorInputField } from './color-input';
+import { SidebarInputField } from './sidebar-input';
 
 const Border = () => {
     const {profileCard,updateProfileCard} =useProfileCard();
@@ -42,15 +44,21 @@ type DirectionCell = {
 
         {border && 
         <div className='body w-full'>
-           <div className="main flex py-3 items-center gap-2 justify-between">
-             <input type="color" value={border.color} onChange={(e)=>{
-                                    updateProfileCard({border:{...border,color:e.currentTarget.value}})
-            }}/>
-            <Input type='number' min={0} className='flex-1 ' value={border.thickness}
-            onChange={(e)=>{
-                                    updateProfileCard({border:{...border,thickness:Number(e.currentTarget.value)}})
+           <div className="main flex py-3  p-0 flex-col gap-2">
+            <ColorInputField
+            title='Border Fill'
+            value={border.color} onChange={(e)=>{
+                                    updateProfileCard({border:{...border,color:e}})
             }}
             />
+            <SidebarInputField
+            title='Border Width'
+value={border.thickness}
+            onChange={(e)=>{
+            updateProfileCard({border:{...border,thickness:Number(e)}})
+            }}
+            />
+           
            </div>
 
            <div>

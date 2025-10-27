@@ -16,7 +16,7 @@ const BioEditor = () => {
       <HoverCardTrigger>
          <div
       className={cn(
-        'flex items-center gap-2 justify-center px-5 w-full h-[45px] text-sm font-semibold',
+        'flex items-center gap-2 justify-center px-5 w-full h-[45px] text-zinc-900 text-sm font-semibold',
         profileCard.bio.reverse && 'flex-row-reverse gap-1'
       )}
     >

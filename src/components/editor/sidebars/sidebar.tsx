@@ -8,67 +8,36 @@ import { Switch } from "@/components/ui/switch"
 import GradientPicker from "./gradient"
 import Border from "./border"
 import { UserButton } from "@clerk/clerk-react"
+import { ColorInputField } from "./color-input"
 
 
 export default function Sidebar() {
   const { profileCard, updateProfileCard } = useProfileCard()
 
   return (
-    <aside className="fixed left-0 top-0 h-[98%] mt-[0.5%] hide-scrollbar rounded-xl w-64  mx-5 bg-background border overflow-y-auto shadow-lg p-4 flex flex-col gap-6 z-50">
-      <h2 className="font-semibold text-lg flex items-center gap-1"><UserButton/> Style Editor</h2>
-
-      <div>
-        <div className="flex items-center justify-between">
-                <Label>Body Color</Label>
-        <Input
-          type="color"
-          className="flex-1 border-none outline-none cursor-pointer"
-          value={profileCard.body_color}
-          onChange={(e) =>
+    <aside className="fixed left-0 top-0 h-[98%] mt-[0.5%] hide-scrollbar rounded-xl w-64  mx-5 bg-background border overflow-y-auto shadow-lg p-4 pt-0 flex flex-col gap-6 z-50">
+      <h2 className="font-semibold text-lg flex items-center gap-1 sticky top-0 bg-background pt-4 pb-2 "><UserButton/> Style Editor
+      <div className="absolute w-full top-full h-1/2 bg-gradient-to-b from-background  to-transparent"></div>
+   
+      </h2>
+       <ColorInputField
+      title="Body Fill"
+        value={profileCard.body_color}
+         onChange={(e) =>
             updateProfileCard({
-              body_color:e.currentTarget.value,
+              body_color:e,
             })
           }
-        />
-
-      </div>
-       <Input
-          type="text"
-           value={profileCard.body_color}
+      />
+       <ColorInputField
+      title="Primary Fill"
+        value={profileCard.colors.primary}
           onChange={(e) =>
             updateProfileCard({
-              body_color:e.currentTarget.value,
+              colors: { ...profileCard.colors, primary: e },
             })
           }
-          className="text-sm"
-        />
-      </div>
-     
-      {/* Primary Color Input */}
-      <div className="flex flex-col gap-2">
-        <Label>Primary Color</Label>
-        <Input
-          type="color"
-          className="h-20 border-none outline-none cursor-pointer"
-          value={profileCard.colors.primary}
-          onChange={(e) =>
-            updateProfileCard({
-              colors: { ...profileCard.colors, primary: e.target.value },
-            })
-          }
-        />
-        <Input
-          type="text"
-          value={profileCard.colors.primary}
-          onChange={(e) =>
-            updateProfileCard({
-              colors: { ...profileCard.colors, primary: e.target.value },
-            })
-          }
-          className="text-sm"
-        />
-      </div>
-
+      />
       {/* Gradient Picker */}
       <div>
         <GradientPicker/>
@@ -79,7 +48,7 @@ export default function Sidebar() {
       </div>
 
       {/* Shadow Toggles */}
-      <div className="flex flex-col gap-4 mt-auto">
+      <div className="flex flex-col gap-4 ">
         <div className="flex items-center justify-between">
           <Label>Shadow</Label>
           <Switch

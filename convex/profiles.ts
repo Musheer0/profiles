@@ -94,5 +94,3 @@ export const getProfile = query({
     return rest; // 🚫 never return user_id
   },
 });
-
-

@@ -14,7 +14,8 @@ export const metadata: Metadata = {
 
 const page = () => {
   return (
-    <div className='w-full max-w-[1300px] h-full px-2 py-5 mx-auto'>
+  <div className='w-full h-full bg-zinc-950'>
+      <div className='w-full max-w-[1300px]  h-full px-2 py-5 mx-auto'>
       <nav className='w-full pb-5 flex gap-[22px] items-center justify-between'>
         <p className='text-xl font-bold '>Profiles</p>
          <Link href={'https://x.com/heysatya_'} className='ml-auto'>
@@ -124,6 +125,7 @@ No coding. Just vibes.
         <p className='text-xs text-muted-foreground mt-auto'>2025&copy; profiles</p>
       </section>
     </div>
+  </div>
   )
 }
 

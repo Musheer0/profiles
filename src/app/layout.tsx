@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Host_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
 
 const font = Host_Grotesk({
@@ -25,7 +26,14 @@ export default function RootLayout({
       <body
         className={`${font.className}  antialiased`}
       >
-        {children}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
         <Toaster/>
       </body>
     </html>

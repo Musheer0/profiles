@@ -3,10 +3,14 @@ import React from 'react'
 import { api } from '../../../../convex/_generated/api'
 import ProfileCard from '@/components/editor/profile-card'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!)
 const UserProfile = async({params}:{params:{username:string}}) => {
     const {username} =  params
     const data = await convex.query(api.profiles.getByUsername,{username})
+    if(data==null){
+      return notFound()
+    }
   return (
     <div 
     style={{

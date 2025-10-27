@@ -5,7 +5,6 @@ import { useProfileCard } from "@/hooks/use-probile-card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
 import { cn } from "@/lib/utils"
 import type { tgradient } from "@/lib/types"
 
@@ -20,6 +19,7 @@ import {
   ArrowDownRight,
   Square,
 } from "lucide-react"
+import { ColorInputField } from "./color-input"
 
 const gradientGrid: { dir: tgradient["anges"] | null; icon: any }[][] = [
   [
@@ -82,11 +82,13 @@ const gradientGrid: { dir: tgradient["anges"] | null; icon: any }[][] = [
   return (
     <div className="flex flex-col gap-4">
       {/* Toggle */}
-      <div className="flex items-center justify-between">
-        <Label>Use Gradient</Label>
-        <Switch
-          checked={isGradient}
-          onClick={() =>{
+      <div className="flex  flex-col justify-between">
+       <p className="text-xs text-muted-foreground font-semibold">Profile Card Fill</p>
+        <div className="w-full flex items-center gap-2 p-1 rounded-lg my-1  bg-muted-foreground/10">
+          {['solid','gradient'].map((e)=>{
+            return (
+              <div key={e}
+                onClick={() =>{
             if(isGradient){
                     updateProfileCard({
               colors: {
@@ -111,7 +113,13 @@ const gradientGrid: { dir: tgradient["anges"] | null; icon: any }[][] = [
             })
             }
           }  }
-        />
+              style={{
+                opacity:(e=="gradient" &&isGradient ) ? 1:(e=='solid' && !isGradient) ? 1:0.3
+              }}
+              className="flex-1 bg-muted-foreground/10 cursor-pointer select-none text-sm py-1 text-muted-foreground font-semibold flex items-center justify-center  rounded-lg">{e}</div>
+            )
+          })}
+        </div>
       </div>
 
       {isGradient ? (
@@ -151,11 +159,10 @@ const gradientGrid: { dir: tgradient["anges"] | null; icon: any }[][] = [
                   return (
                     <Button
                       key={`${rIdx}-${cIdx}`}
-                      variant="outline"
+                      variant={isActive ? "default":"outline"}
                       size="icon"
                       className={cn(
                         "h-10 w-10 rounded-lg flex items-center justify-center",
-                        isActive && "bg-primary text-primary-foreground"
                       )}
                       onClick={() => handlePick(cell.dir)}
                     >
@@ -170,49 +177,21 @@ const gradientGrid: { dir: tgradient["anges"] | null; icon: any }[][] = [
       ) : (
         <>
           {/* Solid Color Mode */}
-          <div className="flex flex-col gap-2">
-            <Label>Color</Label>
-            <Input
-              type="color"
-              value={color || "#000000"}
+          <ColorInputField
+          hidetitle
+             value={color || "#000000"}
               onChange={(e) =>
                 updateProfileCard({
                   colors: {
                     ...profileCard.colors,
-                    color: e.target.value,
+                    color: e,
                   },
                 })
               }
-              className="w-12 h-12 p-1 rounded"
-            />
-            <Input
-              type="text"
-              value={color || "#000000"}
-              onChange={(e) =>
-                updateProfileCard({
-                  colors: {
-                    ...profileCard.colors,
-                    color: e.target.value,
-                  },
-                })
-              }
-              className="text-xs"
-            />
-          </div>
+          title="Profile Card Fill"
+          />
         </>
       )}
-
-      {/* Live Preview */}
-      <div className="h-16 w-full rounded-lg border shadow">
-        <div
-          className="h-full w-full rounded-lg"
-          style={{
-            background: isGradient
-              ? `linear-gradient(${gradient?.anges?.slug}, ${gradient?.from}, ${gradient?.via}, ${gradient?.to})`
-              : color,
-          }}
-        />
-      </div>
     </div>
   )
 }

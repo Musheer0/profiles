@@ -20,7 +20,7 @@ export default function OnBoardingProfileInitializer({ children }: ProfileInitia
     }
   
   }, [profile]);
-
+   
   if (profile === undefined)
     return (
       <div className="flex items-center justify-center w-full h-screen">

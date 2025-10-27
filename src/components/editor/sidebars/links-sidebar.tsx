@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Trash2, Plus, ExternalLink, X } from "lucide-react"
+import { SidebarInputField } from "./sidebar-input"
 
 function getHostnameFromUrl(url: string): string | null {
   try {
@@ -63,44 +64,19 @@ export function LinksSidebar() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="edit-link-name">Name</Label>
-                <Input
-                  id="edit-link-name"
-                  placeholder="Enter link name"
-                  value={selectedLink.name}
-                  onChange={(e) => handleSelectedLinkChange("name", e.target.value)}
-                />
+               <SidebarInputField 
+               title="Name"
+                   value={selectedLink.name}
+                  onChange={(e) => handleSelectedLinkChange("name", e as string)}              
+               />             
               </div>
               <div className="space-y-2">
-                <Label htmlFor="edit-link-url">URL</Label>
-                <Input
-                  id="edit-link-url"
-                  placeholder="https://example.com"
-                  value={selectedLink.link}
-                  onChange={(e) => handleSelectedLinkChange("link", e.target.value)}
-                />
+                 <SidebarInputField 
+               title="Url"
+                 value={selectedLink.link}
+                  onChange={(e) => handleSelectedLinkChange("link", e as string)}            
+               />
               </div>
-
-              {selectedLink.name && selectedLink.link && getHostnameFromUrl(selectedLink.link) && (
-                <div className="flex items-center gap-2 p-2 bg-muted rounded text-sm">
-                  <img
-                    src={`https://www.google.com/s2/favicons?domain=${getHostnameFromUrl(selectedLink.link)}&sz=64`}
-                    className="w-4 h-4 rounded"
-                    alt="favicon"
-                  />
-                  <a
-                    href={selectedLink.link.startsWith("http") ? selectedLink.link : `https://${selectedLink.link}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline truncate"
-                    title={`${selectedLink.name} - ${selectedLink.link}`}
-                  >
-                    {selectedLink.name}
-                  </a>
-                  <ExternalLink className="w-3 h-3 text-muted-foreground flex-shrink-0" />
-                </div>
-              )}
-
               <Button onClick={handleDeleteSelected} variant="destructive" className="w-full">
                 <Trash2 className="w-4 h-4 mr-2" />
                 Delete Link
@@ -114,24 +90,20 @@ export function LinksSidebar() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="link-name">Name</Label>
-                <Input
-                  id="link-name"
-                  placeholder="Enter link name"
-                  value={newLinkName}
-                  onChange={(e) => setNewLinkName(e.target.value)}
+                <SidebarInputField
+                title="Link Name"
+    value={newLinkName}
+                  onChange={(e) => setNewLinkName(e as string)}
                 />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="link-url">URL</Label>
-                <Input
-                  id="link-url"
-                  placeholder="https://example.com"
-                  value={newLinkUrl}
-                  onChange={(e) => setNewLinkUrl(e.target.value)}
+              
+                <SidebarInputField
+                title="Url"
+            value={newLinkUrl}
+                  onChange={(e) => setNewLinkUrl(e as string)}
                 />
+              
               </div>
-              <Button onClick={handleAddLink} className="w-full" disabled={!newLinkName.trim() || !newLinkUrl.trim()}>
+              <Button onClick={handleAddLink} className="w-full h-fit!" disabled={!newLinkName.trim() || !newLinkUrl.trim()}>
                 <Plus className="w-4 h-4 mr-2" />
                 Add Link
               </Button>
