@@ -1,12 +1,11 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 import { useLinks } from "@/components/editor/links-context"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Trash2, Plus, ExternalLink, X } from "lucide-react"
+import { Trash2, Plus, X } from "lucide-react"
 import { SidebarInputField } from "./sidebar-input"
 
 function getHostnameFromUrl(url: string): string | null {
