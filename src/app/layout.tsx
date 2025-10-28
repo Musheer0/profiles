@@ -13,7 +13,7 @@ const font = Host_Grotesk({
 
 export const metadata: Metadata = {
   title: "Profiles",
-  description: "Beautiful profile cards",
+  description: "Your profile, your aesthetic. Create and customize your digital identity effortlessly.",
 };
 
 export default function RootLayout({
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${font.className}  antialiased`}
+        className={`${font.className} overflow-x-hidden flex flex-col items-center  antialiased`}
       >
           <ThemeProvider
             attribute="class"
