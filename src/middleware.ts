@@ -12,8 +12,9 @@ const isPublicRoute = createRouteMatcher([
 export default clerkMiddleware(async (auth, req) => {
   const username = req.headers.get("host")?.split('.')[0];
   const pathname = req.nextUrl.pathname;
+  console.log(username)
   if(pathname==='/'){
-    if(username && username !== 'localhost'){
+    if(username && !username.includes('localhost')){
     const url = req.nextUrl
       url.pathname = `/profile/${username}`
          return NextResponse.rewrite(url)
