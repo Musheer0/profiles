@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${font.className} overflow-x-hidden flex flex-col items-center  antialiased`}
+        className={`${font.className}  flex flex-col items-center  antialiased`}
       >
           <ThemeProvider
             attribute="class"

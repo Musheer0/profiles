@@ -9,7 +9,7 @@ const page = async({params}:{params:Promise<{username:string}>}) => {
   const p =await params
   return (
     <div 
-    className={`${font.className}`}>
+    className={`${font.className} w-full`}>
       <Suspense fallback={<ProfileCardLoader/>}>
         <UserProfile params={p}/>
       </Suspense>
