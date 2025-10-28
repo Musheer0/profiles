@@ -10,15 +10,7 @@ const isPublicRoute = createRouteMatcher([
 ])
 
 export default clerkMiddleware(async (auth, req) => {
-  const username = req.headers.get("host")?.split('.')[0];
-  const pathname = req.nextUrl.pathname;
-  if(pathname==='/'){
-    if(username && !username.includes('localhost')){
-    const url = req.nextUrl
-      url.pathname = `/profile/${username}`
-         return NextResponse.rewrite(url)
-    }
-  }
+
   // Protect all routes that are NOT public
   if (!isPublicRoute(req)) {
     await auth.protect()
