@@ -26,10 +26,12 @@ export function LinksSidebar() {
   
 
   const handleAddLink = () => {
+    
     if (newLinkName.trim() && newLinkUrl.trim()) {
+          const urlWithProtocol = newLinkUrl.startsWith("http://") || newLinkUrl.startsWith("https://") ? newLinkUrl : `https://${newLinkUrl}`
       addLink({
         name: newLinkName.trim(),
-        link: newLinkUrl.trim(),
+        link: urlWithProtocol,
       })
       setNewLinkName("")
       setNewLinkUrl("")
@@ -38,7 +40,9 @@ export function LinksSidebar() {
 
   const handleSelectedLinkChange = (field: "name" | "link", value: string) => {
     if (selectedLink) {
+      selectLink({...selectedLink,[field]:value})
       updateLink(selectedLink.id, { [field]: value })
+      
       
     }
   }
@@ -66,7 +70,9 @@ export function LinksSidebar() {
                <SidebarInputField 
                title="Name"
                    value={selectedLink.name}
-                  onChange={(e) => handleSelectedLinkChange("name", e as string)}              
+                  onChange={(e) => {
+                    handleSelectedLinkChange("name", e as string)
+                  }}              
                />             
               </div>
               <div className="space-y-2">

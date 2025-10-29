@@ -34,18 +34,18 @@ export function LinksProvider({ children }: { children: ReactNode }) {
       ...link,
       id: crypto.randomUUID(),
     }
-    setLinks((prev) =>{
-        updateProfileCard({links: [...prev, newLink]})
-        return  [...prev, newLink]
-    })
+    setLinks((prev) =>{        return  [...prev, newLink]
+    });
+      updateProfileCard({links: [...links, newLink]})
+
   }
 
   const updateLink = (id: string, updates: Partial<Omit<tlink, "id">>) => {
     setLinks((prev) => {
         const updated_list =prev.map((link) => (link.id === id ? { ...link, ...updates } : link))
-        updateProfileCard({links:updated_list})
         return updated_list
     })
+            updateProfileCard({links:links.map((link) => (link.id === id ? { ...link, ...updates } : link))})
   }
 
   const deleteLink = (id: string) => {
